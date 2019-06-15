@@ -10,7 +10,7 @@ trait Spider {
 
 }
 
-trait BrowersDriver{
+trait BrowerDriver{
 
   def getPage(url:String):String
 

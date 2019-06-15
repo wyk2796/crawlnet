@@ -15,7 +15,7 @@ trait GreetOp extends Operation{
   receiveAdd("Greet", greetMsg)
 
   def responseGreet(): Unit ={
-    ResponseForGreet(componentId, param)
+    sender() ! ResponseForGreet(componentId, param)
   }
 
   def greetMsg:Receive = {

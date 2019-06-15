@@ -1,12 +1,37 @@
 package crawlnet.linkserver
 
+import crawlnet.linkserver.LinkMessage.{NewLinks, RequestLink}
+
 import scala.collection.immutable.HashSet
 import scala.collection.immutable.Queue
 
 class LocalMemoryLinkSever extends LinkSever {
 
-  override def getLinks(): Unit = {
+  override val componentName: String = "LocalMemoryLinkSever"
+  override val componentId: String = componentName.hashCode().toString
+  val LMC:LocalMemoryClient = new LocalMemoryClient()
+  override def getLinks(number:Int = 5): Iterable[String] = {
+    LMC.getLinks(number)
+  }
 
+  override def saveLinks(links: TraversableOnce[String]): Unit = {
+    LMC.insertLinks(links)
+  }
+
+  private def updateParam(): Unit ={
+    param.addProperty("LinkNumInPool", LMC.numberOfLinks())
+    param.addProperty("UsedLinkNum", LMC.numberOfUsedLinks())
+  }
+
+  receiveAdd("LinkSever", linkSeverReceive)
+
+  def linkSeverReceive:Receive = {
+    case NewLinks(links) =>
+      saveLinks(links)
+      updateParam()
+    case RequestLink(num, address) =>
+      context.actorSelection(address) ! NewLinks(getLinks(num))
+      updateParam()
   }
 
 
@@ -19,7 +44,7 @@ class LocalMemoryClient extends DataBaseClient{
   var linksPool: Queue[String] = Queue.empty[String]
   var md5CodePool = HashSet.empty[String]
 
-  def insertLinks(links:Traversable[String]): Unit ={
+  def insertLinks(links:TraversableOnce[String]): Unit ={
     links.foreach{
       link =>
         val lcode = md5HashString(link)

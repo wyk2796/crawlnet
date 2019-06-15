@@ -4,16 +4,16 @@ import crawlnet.core.component.cluster.AkkaClusterUnit
 
 trait LinkSever extends AkkaClusterUnit{
 
-  def saveLinks(links:String):Unit
+  def saveLinks(links:TraversableOnce[String]):Unit
 
-  def getLinks:Iterable[String]
+  def getLinks(number:Int):Iterable[String]
 
 }
 
 
 trait DataBaseClient{
 
-  def insertLinks(links:Traversable[String])
+  def insertLinks(links:TraversableOnce[String])
 
   def getLinks(number:Int):Iterable[String]
 
@@ -28,4 +28,13 @@ trait DataBaseClient{
   def numberOfUsedLinks():Long
 
   def numberOfLinks():Long
+}
+
+object LinkMessage{
+
+  case class RequestLink(number:Int, returnAddress:String)
+  case class NextLinks(links:TraversableOnce[String])
+  case class NewLinks(links:TraversableOnce[String])
+
+
 }
