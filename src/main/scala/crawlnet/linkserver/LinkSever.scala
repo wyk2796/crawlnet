@@ -1,8 +1,6 @@
 package crawlnet.linkserver
 
-import crawlnet.core.component.cluster.AkkaClusterUnit
-
-trait LinkSever extends AkkaClusterUnit{
+trait LinkSever{
 
   def saveLinks(links:TraversableOnce[String]):Unit
 

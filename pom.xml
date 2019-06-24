@@ -15,6 +15,7 @@
         <akka.version>2.5.20</akka.version>
         <json4s.version>3.6.5</json4s.version>
         <log4j.version>1.2.17</log4j.version>
+        <selenium.version>3.141.59</selenium.version>
         <PermGen>64m</PermGen>
         <MaxPermGen>512m</MaxPermGen>
         <CodeCacheSize>512m</CodeCacheSize>
@@ -149,13 +150,8 @@
         <dependency>
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>
-            <version>2.4.3</version>
+            <version>3.3.1</version>
             <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.squareup.okhttp</groupId>
-            <artifactId>okhttp</artifactId>
-            <version>2.5.0</version>
         </dependency>
 
         <dependency>
@@ -169,6 +165,31 @@
             <artifactId>json4s-jackson_${scala.binary.version}</artifactId>
             <version>${json4s.version}</version>
         </dependency>
+
+        <!--selenium-->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${selenium.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-server</artifactId>
+            <version>${selenium.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-api</artifactId>
+            <version>${selenium.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>1.12.1</version>
+        </dependency>
     </dependencies>
+
+
 
 </project>

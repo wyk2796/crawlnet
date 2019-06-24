@@ -1,15 +1,28 @@
 package crawlnet.linkserver
 
-import crawlnet.linkserver.LinkMessage.{NewLinks, RequestLink}
-
+import crawlnet.core.component.cluster.AkkaClusterUnit
+import crawlnet.linkserver.LinkMessage.{NewLinks, NextLinks, RequestLink}
 import scala.collection.immutable.HashSet
 import scala.collection.immutable.Queue
 
-class LocalMemoryLinkSever extends LinkSever {
+class LocalMemoryLinkSever(name:String) extends AkkaClusterUnit with LinkSever{
 
-  override val componentName: String = "LocalMemoryLinkSever"
+  override val componentName: String = name
   override val componentId: String = componentName.hashCode().toString
+  override val componentType: String = "LinkServer"
   val LMC:LocalMemoryClient = new LocalMemoryClient()
+  receiveAdd("LinkServer", linkSeverReceive)
+
+
+  param.setComponentName(componentName)
+  param.setComponentType(componentType)
+  param.setComponentId(componentId)
+  akkaAddressBook.addAddress(componentId, componentName, componentType, param.getAkkaAddress)
+  info(s"[$componentId, $componentName, $componentType]: server is running, address:${param.getAkkaAddress}")
+  info(s"[$componentId, $componentName, $componentType]: register receiver:" + getReceiverNames.mkString(","))
+  register()
+
+
   override def getLinks(number:Int = 5): Iterable[String] = {
     LMC.getLinks(number)
   }
@@ -23,19 +36,14 @@ class LocalMemoryLinkSever extends LinkSever {
     param.addProperty("UsedLinkNum", LMC.numberOfUsedLinks())
   }
 
-  receiveAdd("LinkSever", linkSeverReceive)
-
   def linkSeverReceive:Receive = {
     case NewLinks(links) =>
       saveLinks(links)
       updateParam()
     case RequestLink(num, address) =>
-      context.actorSelection(address) ! NewLinks(getLinks(num))
+      context.actorSelection(address) ! NextLinks(getLinks(num))
       updateParam()
   }
-
-
-
 }
 
 class LocalMemoryClient extends DataBaseClient{
@@ -77,8 +85,8 @@ class LocalMemoryClient extends DataBaseClient{
     md5CodePool -= code
   }
 
-  def numberOfUsedLinks():Long = linksPool.length
+  def numberOfUsedLinks():Long = md5CodePool.size
 
-  def numberOfLinks():Long = md5CodePool.size
+  def numberOfLinks():Long = linksPool.length
 
 }
