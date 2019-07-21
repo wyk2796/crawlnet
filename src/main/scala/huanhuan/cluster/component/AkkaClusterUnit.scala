@@ -1,7 +1,7 @@
-package crawlnet.core.component.cluster
+package huanhuan.cluster.component
 
-import crawlnet.GlobalConfiguration
-import crawlnet.core.component.AkkaUnit
+import huanhuan.GlobalConfiguration
+import huanhuan.cluster.operation.{MasterRegisterOp, MasterSynchronizationOp, UnitRegisterOp, UnitSynchronizationOp}
 
 trait AkkaClusterUnit extends AkkaUnit
   with UnitSynchronizationOp

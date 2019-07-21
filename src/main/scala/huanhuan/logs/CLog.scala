@@ -1,4 +1,4 @@
-package crawlnet.core.logs
+package huanhuan.logs
 
 import org.apache.log4j.{DailyRollingFileAppender, Logger, PatternLayout}
 
