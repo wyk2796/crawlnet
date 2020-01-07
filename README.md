@@ -3,13 +3,17 @@ This project is distributed web crawler. It based on AKKA concurrency framework 
 here is little detail of design.
 
 structure of distributed framework \
-![design_crawler.jpg](https://i.loli.net/2020/01/08/P5TXHr9VoUSNJjI.jpg){:height="100px" width="400px"}
+![design_crawler.jpg](https://i.loli.net/2020/01/08/P5TXHr9VoUSNJjI.jpg)
+<img src="https://i.loli.net/2020/01/08/P5TXHr9VoUSNJjI.jpg", width="500px" height="50p0x">
 
 link_serving for web crawler \
-![link_service.jpg](https://i.loli.net/2020/01/08/PMJaWVmxKvEoktB.jpg){:height="100px" width="400px"}
+![link_service.jpg](https://i.loli.net/2020/01/08/PMJaWVmxKvEoktB.jpg)
+<img src="https://i.loli.net/2020/01/08/PMJaWVmxKvEoktB.jpg", width="500px" height="50p0x">
 
 single bot  \
-![spider.jpg](https://i.loli.net/2020/01/08/XmyO68tbpaRUcAi.jpg){:height="100px" width="400px"}
+![spider.jpg](https://i.loli.net/2020/01/08/XmyO68tbpaRUcAi.jpg)
+<img src="https://i.loli.net/2020/01/08/XmyO68tbpaRUcAi.jpg", width="500px" height="50p0x">
 
 master \
-![spider_master.jpg](https://i.loli.net/2020/01/08/Ww53vxn2JUAX1GK.jpg){:height="100px" width="400px"}
+![spider_master.jpg](https://i.loli.net/2020/01/08/Ww53vxn2JUAX1GK.jpg)
+<img src="https://i.loli.net/2020/01/08/Ww53vxn2JUAX1GK.jpg", width="500px" height="50p0x">
