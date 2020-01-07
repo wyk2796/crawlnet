@@ -14,10 +14,10 @@ link_serving for web crawler \
 
 single bot  \
  <div align=center>
-<img src="https://i.loli.net/2020/01/08/XmyO68tbpaRUcAi.jpg" width="500px" height="500px" />
+<img src="https://i.loli.net/2020/01/08/XmyO68tbpaRUcAi.jpg" width="500px" height="300px" />
 </div>
 
 master \
 <div align=center>
-<img src="https://i.loli.net/2020/01/08/Ww53vxn2JUAX1GK.jpg" width="500px" height="500px" />
+<img src="https://i.loli.net/2020/01/08/Ww53vxn2JUAX1GK.jpg" width="500px" height="300px" />
 </div>
