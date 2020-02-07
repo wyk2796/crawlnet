@@ -7,7 +7,7 @@ here is little detail of design.
 <img src=https://i.loli.net/2020/01/08/P5TXHr9VoUSNJjI.jpg width=500px height=500px />
 </div>
 
-### Link_serving for web crawler 
+### Url-Management for web crawler 
 <div align=center>
 <img src="https://i.loli.net/2020/01/08/PMJaWVmxKvEoktB.jpg" width="700px" height="500px" />
 </div>
@@ -23,4 +23,4 @@ here is little detail of design.
 </div>
 
 ## How to use
-Here is a [demo](https://github.com/wyk2796/crawlnet/blob/master/src/test/scala/spidertest/SimpleSpider.scala)
+Here is a [demo](https:/s/github.com/wyk2796/crawlnet/blob/master/src/test/scala/spidertest/SimpleSpider.scala)
